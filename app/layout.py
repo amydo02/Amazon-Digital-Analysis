@@ -77,6 +77,7 @@ def build_layout() -> html.Div:
                 id="tab-content-spinner",
                 type="default",
                 color=PRIMARY,
+                target_components={"tab-content": "children"},  # only spinner on main tab switch
                 children=html.Div(
                     id="tab-content",
                     style={"maxWidth": "1100px", "margin": "0 auto",
@@ -241,12 +242,15 @@ def one_col(fig) -> html.Div:
 
 def two_col(fig_left, fig_right) -> html.Div:
     """Two Plotly figures side by side."""
+    cell = {"minWidth": 0, "overflow": "hidden"}
     return html.Div(
         style={"display": "grid", "gridTemplateColumns": "1fr 1fr",
                "gap": "20px", "marginBottom": "8px"},
         children=[
-            dcc.Graph(figure=fig_left,  config={"displayModeBar": False}),
-            dcc.Graph(figure=fig_right, config={"displayModeBar": False}),
+            html.Div(dcc.Graph(figure=fig_left,  config={"displayModeBar": False},
+                               responsive=True, style={"width": "100%"}), style=cell),
+            html.Div(dcc.Graph(figure=fig_right, config={"displayModeBar": False},
+                               responsive=True, style={"width": "100%"}), style=cell),
         ],
     )
 

@@ -26,7 +26,7 @@ def reviews_by_year(df: pd.DataFrame) -> go.Figure:
         labels={"year": "Year", "reviews": "Number of Reviews"},
         color_discrete_sequence=["#3498db"],
     )
-    fig.update_layout(height=420, xaxis=dict(type="category"))
+    fig.update_layout(height=420, xaxis=dict(type="category"), title_x=0.5)
     return fig
 
 
@@ -44,7 +44,7 @@ def reviews_by_month(df: pd.DataFrame) -> go.Figure:
         category_orders={"month_name": list(_MONTH_LABELS.values())},
         color_discrete_sequence=["#e67e22"],
     )
-    fig.update_layout(height=420)
+    fig.update_layout(height=420, title_x=0.5)
     return fig
 
 
@@ -60,7 +60,7 @@ def reviews_by_day_of_month(df: pd.DataFrame) -> go.Figure:
         labels={"day": "Day of Month", "reviews": "Number of Reviews"},
         color_discrete_sequence=["#1abc9c"],
     )
-    fig.update_layout(height=400)
+    fig.update_layout(height=400, title_x=0.5)
     return fig
 
 
@@ -82,5 +82,5 @@ def reviews_by_day_of_week(df: pd.DataFrame) -> go.Figure:
         category_orders={"day_of_week": _DOW_ORDER},
         color_discrete_sequence=["#9b59b6"],
     )
-    fig.update_layout(height=400)
+    fig.update_layout(height=400, title_x=0.5)
     return fig

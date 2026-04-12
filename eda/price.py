@@ -20,7 +20,8 @@ def price_distribution(df: pd.DataFrame) -> go.Figure:
         labels={"price": "Price ($)", "count": "Number of Reviews"},
         color_discrete_sequence=["#2ecc71"],
     )
-    fig.update_layout(yaxis_title="Number of Reviews", height=420)
+    fig.update_layout(yaxis_title="Number of Reviews", height=420,
+                      title_x=0.5)
     return fig
 
 
@@ -48,7 +49,7 @@ def rating_by_price_tier(df: pd.DataFrame) -> go.Figure:
                 "rating": "Star Rating"},
         color_continuous_scale="RdYlGn",
     )
-    fig.update_layout(height=440)
+    fig.update_layout(height=440, title_x=0.5)
     return fig
 
 
